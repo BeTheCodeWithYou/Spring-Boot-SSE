@@ -1,0 +1,20 @@
+2019-01-26 22:59:54,345 [main] INFO  SseServerApplication - Starting SseServerApplication on DESKTOP-BRI0JR9 with PID 13328 (D:\dev\github\spring-boot-sse\sse-server\build\libs\sse-server-0.0.1-SNAPSHOT.jar started by User in D:\dev\github\spring-boot-sse\sse-server\build\libs)
+2019-01-26 22:59:54,345 [main] INFO  SseServerApplication - No active profile set, falling back to default profiles: default
+2019-01-26 22:59:57,167 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-01-26 22:59:57,183 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-01-26 22:59:57,214 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-01-26 22:59:57,214 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-01-26 22:59:57,230 [main] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\User\bin;D:\Tech\installedsoft\Git\mingw64\bin;D:\Tech\installedsoft\Git\usr\local\bin;D:\Tech\installedsoft\Git\usr\bin;D:\Tech\installedsoft\Git\usr\bin;D:\Tech\installedsoft\Git\mingw64\bin;D:\Tech\installedsoft\Git\usr\bin;C:\Users\User\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\System32\OpenSSH;%JAVA_HOME%\bin;D:\Tech\installedsoft\Git\cmd;C:\Users\User\AppData\Local\Microsoft\WindowsApps;D:\Tech\installedsoft\gradle-4.10.1\bin;D:\Tech\installedsoft\Git\usr\bin\vendor_perl;D:\Tech\installedsoft\Git\usr\bin\core_perl;.]
+2019-01-26 22:59:57,386 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-01-26 22:59:57,386 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2916 ms
+2019-01-26 22:59:57,747 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-26 22:59:58,012 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2019-01-26 22:59:58,078 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-01-26 22:59:58,078 [main] INFO  SseServerApplication - Started SseServerApplication in 4.337 seconds (JVM running for 5.47)
+2019-01-26 23:00:15,274 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-01-26 23:00:15,274 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-01-26 23:00:15,290 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 16 ms
+2019-01-26 23:00:15,368 [http-nio-8080-exec-1] INFO  com.xp.controller.SseServerController - Client subscribed
+2019-01-26 23:00:26,683 [http-nio-8080-exec-2] INFO  com.xp.controller.SseServerController - event sent to subscribed client
+2019-01-26 23:00:50,607 [http-nio-8080-exec-4] INFO  com.xp.controller.SseServerController - event sent to subscribed client
+2019-01-26 23:01:05,985 [Thread-3] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'

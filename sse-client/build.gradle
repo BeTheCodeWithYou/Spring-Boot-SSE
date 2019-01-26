@@ -1,0 +1,16 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+group = 'com.xp.sse-client'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	compile group: 'com.launchdarkly', name: 'okhttp-eventsource', version: '1.9.0'
+	
+}
