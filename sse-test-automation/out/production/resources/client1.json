@@ -1,0 +1,14 @@
+{
+   "scenarioName": "client 1 making connection",
+   "steps": [
+       {
+         "name": "subscribe_client",
+         "url": "com.xp.SseClient",
+         "operation": "subscribeClient",
+         "request": "1234",
+         "assertions": {
+         }
+      }
+
+   ]
+}
