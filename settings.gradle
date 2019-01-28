@@ -1,2 +1,3 @@
 include "sse-server"
 include "sse-client"
+include "sse-test-automation"

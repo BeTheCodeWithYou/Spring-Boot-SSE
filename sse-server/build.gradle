@@ -26,6 +26,6 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	compile 'org.springframework.boot:spring-boot-starter-web:2.0.6.RELEASE'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-sseclient'
 	
 }

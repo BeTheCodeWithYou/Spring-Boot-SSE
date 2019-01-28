@@ -1,0 +1,18 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+group = 'com.xp.sse-test'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	compile group: 'junit', name: 'junit', version:'4.12'
+	compile group: 'org.jsmart', name: 'zerocode-rest-bdd', version:'1.2.11'
+	compile group: 'com.launchdarkly', name: 'okhttp-eventsource', version: '1.9.0'
+	
+}
