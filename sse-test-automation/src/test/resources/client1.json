@@ -2,10 +2,10 @@
    "scenarioName": "client 1 making connection",
    "steps": [
        {
-         "name": "subscribe_client",
+         "name": "subscribe_client_1",
          "url": "com.xp.sseclient.SseClient",
          "operation": "subscribeClient",
-         "request": "1234",
+         "request": "",
          "assertions": {
          }
       }

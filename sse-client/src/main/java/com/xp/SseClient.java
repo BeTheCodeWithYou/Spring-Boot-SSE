@@ -15,11 +15,11 @@ public class SseClient {
 
     public static void main(String[] args) throws InterruptedException {
         EventHandler eventHandler = new ClientEventHandler();
-        String url = String.format("http://localhost:8080/subscribe/1234");
+        String url = String.format("http://localhost:8080/subscribe");
         EventSource.Builder builder = new EventSource.Builder(eventHandler, URI.create(url));
 
         try (EventSource eventSource = builder.build()) {
-            eventSource.setReconnectionTimeMs(3000);
+            eventSource.setReconnectionTimeMs(60000);
             eventSource.start();
 
             TimeUnit.MINUTES.sleep(10);

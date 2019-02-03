@@ -1,15 +1,15 @@
 package com.xp.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author Neeraj Sidhaye
@@ -18,29 +18,41 @@ import java.util.concurrent.ConcurrentHashMap;
 @RestController
 public class SseServerController {
 
-    private static  final Logger log = LoggerFactory.getLogger(SseServerController.class);
-    private Map<String, SseEmitter> emitters = new ConcurrentHashMap<>();
+    private static final Logger LOG = LoggerFactory.getLogger(SseServerController.class);
+    private final CopyOnWriteArrayList<SseEmitter> emitters = new CopyOnWriteArrayList<>();
 
-    @GetMapping("/subscribe/{token}")
-    public SseEmitter subscribeForEvents(@PathVariable("token") String token){
-        log.debug("Client Subscribing", token);
-        SseEmitter sse = new SseEmitter(60*1000L);
-        this.emitters.put(token, sse);
-        log.info("Client subscribed");
-        return sse;
+    @GetMapping("/subscribe")
+    public SseEmitter subscribeForEvents() {
+        LOG.info("/subscribe called ");
+        SseEmitter emitter = new SseEmitter(60_000L); // keep connection open for 60 seconds
+        this.emitters.add(emitter);
+        LOG.info("Client subscribed");
+        return emitter;
     }
 
-    @PostMapping("/events/{token}")
-    public ResponseEntity<String> pushNewEvents(@RequestBody String eventData, @PathVariable("token") String token) throws IOException {
-        log.debug("new event received for client {} ", token);
-        if(this.emitters.get(token)!=null) {
-            this.emitters.get(token).send(eventData);
-            log.info("event sent to subscribed client");
-            return new ResponseEntity<String>("event sent to client",HttpStatus.OK);
-        }else {
-            log.debug("pushNewEvent: subscription not found for client {}", token);
-            return new ResponseEntity<String>("client not subscribed", HttpStatus.NOT_FOUND);
-        }
+    @PostMapping("/events")
+    public void pushNewEventsToClients(@RequestBody String eventData) throws IOException {
+        LOG.info("/events : event received for client {}", eventData);
 
+        List<SseEmitter> deadEmitters = new ArrayList<>();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String event = objectMapper.writeValueAsString(eventData);
+
+        this.emitters.forEach(emitter -> {
+
+            try {
+                emitter.send(event); // broadcasting same message to all the connected clients.
+                LOG.info("event sent to client");
+
+            } catch (Exception e) {
+
+                deadEmitters.add(emitter);
+            }
+
+        });
+
+        this.emitters.removeAll(deadEmitters);
     }
+
 }

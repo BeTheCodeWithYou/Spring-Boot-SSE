@@ -3,11 +3,20 @@ package com.xp.sseclient;
 import com.launchdarkly.eventsource.EventHandler;
 import com.launchdarkly.eventsource.MessageEvent;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @author Neeraj Sidhaye
  */
 
 public class ClientEventHandler implements EventHandler {
+
+
+    private static final Map<String, String> sseAssertionMap = new ConcurrentHashMap<>();
 
     @Override
     public void onOpen() throws Exception {
@@ -21,8 +30,11 @@ public class ClientEventHandler implements EventHandler {
 
     @Override
     public void onMessage(String event, MessageEvent messageEvent) throws Exception {
-        System.out.println("sse-client: Data Received:"+messageEvent.getData());
-        System.out.println("sse-client: Data Received:event:"+ event);
+        System.out.println("sse-client: Data Received:" + messageEvent.getData());
+
+        sseAssertionMap.put(UUID.randomUUID().toString(), messageEvent.getData());
+
+        System.out.println("sse-client: Data written to file for assertion"+sseAssertionMap.size());
     }
 
     @Override
@@ -35,6 +47,9 @@ public class ClientEventHandler implements EventHandler {
         System.out.println("onError: " + t);
     }
 
+    public int validateAssertion(String str) {
 
+        return sseAssertionMap.size();
+    }
 
 }

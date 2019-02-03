@@ -3,7 +3,7 @@
    "steps": [
       {
          "name": "publish_event_for_sse",
-         "url": "/events/1234",
+         "url": "/events",
          "operation": "POST",
          "request": {
             "body": {
@@ -15,18 +15,21 @@
          },
          "assertions": {
             "status": 200
-            //            "body": {
-            //               "id": "$NOT.NULL"
-            //            }
          }
+      },
+      {
+         "name": "sleep",
+         "url": "com.xp.util.Delay",
+         "operation": "delay",
+         "request": 5,
+         "assertions": {}
+      },
+      {
+         "name": "asserting_client_received_event",
+         "url": "com.xp.sseclient.ClientEventHandler",
+         "operation": "validateAssertion",
+         "request": "",
+         "assertions": 2
       }
-//      {
-//         "name": "subscribe_client",
-//         "url": "com.xp.SseClient",
-//         "operation": "subscribeClient",
-//         "request": "${$.publish_event_for_sse.response.body.id}",
-//         "assertions": {
-//         }
-//      }
    ]
 }

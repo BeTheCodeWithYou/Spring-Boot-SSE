@@ -15,30 +15,17 @@ import com.launchdarkly.eventsource.EventSource;
 
 public class SseClient {
 
-    public static void main(String[] args) throws InterruptedException {
-        EventHandler eventHandler = new ClientEventHandler();
-        String url = String.format("http://localhost:8080/subscribe/1234");
-        EventSource.Builder builder = new EventSource.Builder(eventHandler, URI.create(url));
-
-        try (EventSource eventSource = builder.build()) {
-            eventSource.setReconnectionTimeMs(3000);
-            eventSource.start();
-
-            TimeUnit.MINUTES.sleep(10);
-        }
-    }
-
-    public Map<String, String> subscribeClient(String token) throws InterruptedException {
+    public Map<String, String> subscribeClient(String uuid) throws InterruptedException {
 
         EventHandler eventHandler = new ClientEventHandler();
-        String url = String.format("http://localhost:8080/subscribe/"+token);
+        String url = String.format("http://localhost:8080/subscribe");
         EventSource.Builder builder = new EventSource.Builder(eventHandler, URI.create(url));
         System.out.println("client establishing connection");
         try (EventSource eventSource = builder.build()) {
             eventSource.setReconnectionTimeMs(3000);
             eventSource.start();
 
-            TimeUnit.SECONDS.sleep(60);
+            TimeUnit.SECONDS.sleep(5);
         }
 
         System.out.println("execution success");
