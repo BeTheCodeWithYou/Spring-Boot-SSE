@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Sse client</h1>
+<a href="javascript:void" onclick="subscribe()">Subscribe For Events</a>
+<div id="sseDiv"></div>
+
+<script>
+function subscribe(){
+if(typeof(EventSource) !== "undefined") {
+    var eventSource = new EventSource("http://localhost:8080/subscribe");
+
+	eventSource.onmessage = event => {
+	  const msg = JSON.parse(event.data);
+	  document.getElementById("sseDiv").innerHTML = msg;
+    };
+} else {
+    document.getElementById("sseDiv").innerHTML =
+                     "Your browser does not support server-sent events.";
+}
+}
+</script>
+
+</body>
+</html>
