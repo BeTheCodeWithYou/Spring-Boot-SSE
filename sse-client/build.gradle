@@ -1,13 +1,8 @@
-apply plugin: 'java'
-apply plugin: 'idea'
+apply from : '../build.gradle'
 
-group = 'com.xp.sse-client'
-version = '0.0.1-SNAPSHOT'
+group = 'com.xp.sse'
+version = '1.0'
 sourceCompatibility = '1.8'
-
-repositories {
-	mavenCentral()
-}
 
 dependencies {
 

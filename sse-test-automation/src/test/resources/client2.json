@@ -3,7 +3,7 @@
    "steps": [
       {
          "name": "subscribe_client_2",
-         "url": "com.xp.sseclient.SseClient",
+         "url": "com.xp.SseClient",
          "operation": "subscribeClient",
          "request": "",
          "assertions": {

@@ -26,7 +26,7 @@
       },
       {
          "name": "asserting_client_received_event",
-         "url": "com.xp.sseclient.ClientEventHandler",
+         "url": "com.xp.ClientEventHandler",
          "operation": "validateAssertion",
          "request": "",
          "assertions": 2

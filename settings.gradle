@@ -1,3 +1,1 @@
-include "sse-server"
-include "sse-client"
-include "sse-test-automation"
+include ":sse-server", ":sse-client", ":sse-test-automation"

@@ -16,5 +16,4 @@ public class SseServerApplication {
         springApplication.addListeners(new ApplicationPidFileWriter());
         springApplication.run(args);
     }
-
 }
